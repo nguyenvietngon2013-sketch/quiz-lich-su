@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Trắc nghiệm Lịch sử 7 HK2</title>
+<style>
+body { font-family: Arial; max-width: 900px; margin: auto; padding: 20px; }
+.question { margin-bottom: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 10px; }
+button { padding: 10px 20px; font-size: 16px; }
+.correct { color: green; }
+.wrong { color: red; }
+</style>
+</head>
+
+<body>
+
+<h2>Đề kiểm tra Lịch sử 7 - HK2</h2>
+
+<form id="quiz"></form>
+
+<button onclick="submitQuiz()">Nộp bài</button>
+
+<h2 id="result"></h2>
+
+<script>
+const questions = [
+{
+q: "Câu 1: Kế sách 'vườn không nhà trống' được áp dụng trong lần kháng chiến nào?",
+a: ["A. Chỉ sử dụng lần 1","B. Chỉ lần 2","C. Chỉ lần 3","D. Cả 3 lần"],
+correct: 3
+},
+{
+q: "Câu 2: Trần Quốc Tuấn được cử làm gì?",
+a: ["A. Thái sư","B. Đại vương","C. Quốc công tiết chế","D. Nguyên soái"],
+correct: 2
+},
+{
+q: "Câu 3: Tác phẩm nào động viên quân sĩ?",
+a: ["A. Binh thư yếu lược","B. Vạn Kiếp bí truyền","C. Hịch tướng sĩ","D. Nam dược thần hiệu"],
+correct: 2
+},
+{
+q: "Câu 4: Nhân tố quan trọng nhất?",
+a: ["A. Chăm lo sức dân","B. Giải quyết nội bộ","C. Chuẩn bị","D. Tinh thần"],
+correct: 0
+},
+{
+q: "Câu 5: Yếu tố tự nhiên Bạch Đằng?",
+a: ["A. Thuỷ triều","B. Quân yếu","C. Rừng","D. Đường"],
+correct: 0
+},
+{
+q: "Câu 6: Ý nghĩa KHÔNG đúng?",
+a: ["A","B","C","D. Mạnh nhất Đông Nam Á"],
+correct: 3
+},
+{
+q: "Câu 7: Không nhằm mục đích?",
+a: ["A","B","C","D. Đánh nhanh thắng nhanh"],
+correct: 3
+},
+{
+q: "Câu 8: Hội nghị Diên Hồng gồm?",
+a: ["A","B","C","D. Bô lão"],
+correct: 3
+},
+{
+q: "Câu 9: Nhà Hồ thành lập do?",
+a: ["A","B","C","D. Quý tộc Trần suy tôn"],
+correct: 3
+},
+{
+q: "Câu 10: Vì sao cải cách?",
+a: ["A","B","C. Khủng hoảng","D"],
+correct: 2
+},
+{
+q: "Câu 11: Cải cách lĩnh vực?",
+a: ["A","B","C","D. Toàn diện"],
+correct: 3
+},
+{
+q: "Câu 12: Tăng cường quân sự?",
+a: ["A","B","C","D. Xây thành, tăng quân"],
+correct: 3
+},
+{
+q: "Câu 13: Không đúng cải cách?",
+a: ["A","B","C","D"],
+correct: 3
+},
+{
+q: "Câu 14: Minh lấy cớ?",
+a: ["A. Cướp ngôi","B","C","D"],
+correct: 0
+},
+{
+q: "Câu 15: Nguyên nhân Lam Sơn?",
+a: ["A. Áp bức","B","C","D"],
+correct: 0
+},
+{
+q: "Câu 16: Căn cứ?",
+a: ["A","B","C. Lam Sơn","D"],
+correct: 2
+},
+{
+q: "Câu 17: Vì sao đánh Nghệ An?",
+a: ["A","B","C","D. Đất rộng, đông dân"],
+correct: 3
+},
+{
+q: "Câu 18: Thắng lợi 1426?",
+a: ["A. Tốt Động","B","C","D"],
+correct: 0
+},
+{
+q: "Câu 19: Giết tướng nào?",
+a: ["A","B","C. Liễu Thăng","D"],
+correct: 2
+},
+{
+q: "Câu 20: Nguyên nhân thắng lợi?",
+a: ["A. Lòng yêu nước","B","C","D"],
+correct: 0
+}
+];
+
+const quiz = document.getElementById("quiz");
+
+questions.forEach((item, i) => {
+let div = document.createElement("div");
+div.className = "question";
+
+let html = `<p>${item.q}</p>`;
+item.a.forEach((ans, j) => {
+html += `<label><input type="radio" name="q${i}" value="${j}"> ${ans}</label><br>`;
+});
+
+div.innerHTML = html;
+quiz.appendChild(div);
+});
+
+function submitQuiz() {
+let score = 0;
+
+questions.forEach((item, i) => {
+let selected = document.querySelector(`input[name="q${i}"]:checked`);
+if (selected && parseInt(selected.value) === item.correct) {
+score++;
+}
+});
+
+document.getElementById("result").innerText = "Điểm: " + score + "/20";
+}
+</script>
+
+</body>
+</html>
